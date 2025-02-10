@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  firstName String   @map("first_name")
+  lastName  String   @map("last_name")
+  age       Int
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  houseOwned House[] @relation("house_owner")
+  houseBuilt House[] @relation("house_builder")
+
+  @@map("users")
+}
+
+model House {
+  id           String   @id @default(uuid())
+  address      String   @unique
+  wifiPassword String?  @map("wifi_password")
+  owner        User     @relation("house_owner", fields: [ownerId], references: [id])
+  ownerId      String   @map("owner_id")
+  builtBy      User     @relation("house_builder", fields: [builtById], references: [id])
+  builtById    String
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  @@map("houses")
+}

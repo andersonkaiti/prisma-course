@@ -1,0 +1,78 @@
+GET http://localhost:3000/user HTTP/1.1
+
+###
+
+POST http://localhost:3000/user HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Anderson",
+    "lastName": "Kaiti",
+    "age": 20
+}
+
+###
+
+PUT http://localhost:3000/user/3e6400ea-076b-4ae5-936f-6363de053aa8 HTTP/1.1
+content-type: application/json
+
+{
+    "newAge": 21
+}
+
+###
+
+DELETE http://localhost:3000/user/3e6400ea-076b-4ae5-936f-6363de053aa8 HTTP/1.1
+
+###
+
+POST http://localhost:3000/house HTTP/1.1
+content-type: application/json
+
+{
+    "address": "8912 Random Street, V4H324",
+    "wifiPassword": "password",
+    "ownerId": "893ee2a0-4bf2-4726-9544-e0c1988d4a7f",
+    "builtById": "c217ac19-103b-4f00-94de-eb28a3d2b308"
+}
+
+###
+
+GET http://localhost:3000/house HTTP/1.1
+
+###
+
+GET http://localhost:3000/house/id/4479135d-229d-448f-96c7-ee6aee28e9b9 HTTP/1.1
+
+###
+
+GET http://localhost:3000/house/address HTTP/1.1
+content-type: application/json
+
+{
+    "address": "8912 Random Street, V4H324"
+}
+
+###
+
+POST http://localhost:3000/house/many HTTP/1.1
+content-type: application/json
+
+[
+  {
+    "address": "1234 Random Street, V4H324",
+    "wifiPassword": "password",
+    "ownerId": "893ee2a0-4bf2-4726-9544-e0c1988d4a7f",
+    "builtById": "c217ac19-103b-4f00-94de-eb28a3d2b308"
+  },
+  {
+    "address": "4321 Random Street, V4H3B4",
+    "wifiPassword": null,
+    "ownerId": "893ee2a0-4bf2-4726-9544-e0c1988d4a7f",
+    "builtById": "33951ab8-4eef-4d47-a4db-7b7a61d99fb3"
+  }
+]
+
+###
+
+GET http://localhost:3000/house/withFilters HTTP/1.1

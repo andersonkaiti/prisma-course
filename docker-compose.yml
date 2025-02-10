@@ -1,0 +1,18 @@
+version: "3.4"
+
+services:
+  database:
+    image: mysql
+    container_name: prisma-database
+    env_file:
+      - .env
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_DATABASE=$MYSQL_DATABASE
+    ports:
+      - $LOCAL_PORT:$DOCKER_PORT
+    volumes:
+      - mysql_data:/var/lib/myql
+
+volumes:
+  mysql_data:
