@@ -14,7 +14,7 @@ npm run dev
 
 # Prisma
 
-O Prisma é uma ORM (Object-Relational Mapping) que facilita a interação com bancos de dados. Ele é composto por três principais ferramentas:
+O Prisma é uma `ORM (Object-Relational Mapping)` que facilita a interação com bancos de dados e é composto por três principais ferramentas:
 
 - `Prisma Client` - Gerador automático de consultas com segurança de tipos.
 - `Prisma Migrate` - Gerencia migrações do banco de dados.
@@ -28,7 +28,7 @@ npm install -D prisma
 
 # Gerar o Schema
 
-Para definir a estrutura do banco de dados, como o client, o tipo de banco de dados e a connection string, é necessário gerar o schema executando o seguinte comando no terminal:
+Para definir o banco de dados, como o client, o tipo de banco de dados e a connection string, é necessário gerar o schema executando o seguinte comando no terminal:
 
 ```bash
 prisma init
@@ -71,7 +71,7 @@ model User {
 
 # Criando Migration
 
-Para criar uma migration, aplicar as alterações no banco de dados e gerar um arquivo contendo as queries SQL correspondentes à estrutura atual do schema, basta executar o seguinte comando:
+Para `criar uma migration`, aplicar as alterações no banco de dados e gerar um arquivo contendo as queries SQL correspondentes à estrutura atual do schema, basta executar o seguinte comando:
 
 ```bash
 prisma migrate dev
@@ -117,7 +117,7 @@ const prisma = new PrismaClient();
 
 # Realizando Queries
 
-O enum gerado garante a segurança de tipo ao utilizar o PrismaClient, fornecendo um gerador de queries automático com segurança de tipo.
+O enum gerado garante a segurança de tipo ao utilizar o `PrismaClient`, fornecendo um `gerador de queries automático` com `segurança de tipo`.
 
 Para criar um registro, basta utilizar o método `.create()` e passar um objeto com a propriedade data, contendo os valores a serem inseridos. O PrismaClient fornecerá `sugestões automáticas` para os campos disponíveis, com base no schema definido:
 
