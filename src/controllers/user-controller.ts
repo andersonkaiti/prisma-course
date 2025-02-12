@@ -1,8 +1,10 @@
 import { Request, Response } from "express";
-import { userRepository } from "@repositories/user-repository";
+import { UserRepository } from "@repositories/user-repository";
 
-const userController = {
-  get: async (_req: Request, res: Response) => {
+const userRepository = new UserRepository();
+
+class UserController {
+  async get(_req: Request, res: Response) {
     try {
       const allUsers = await userRepository.get();
 
@@ -15,9 +17,9 @@ const userController = {
       });
       console.error(_err.message);
     }
-  },
+  }
 
-  create: async (req: Request, res: Response) => {
+  async create(req: Request, res: Response) {
     try {
       const { firstName, lastName, age } = req.body;
 
@@ -32,9 +34,9 @@ const userController = {
       });
       console.error(_err.message);
     }
-  },
+  }
 
-  updateById: async (req: Request, res: Response) => {
+  async updateById(req: Request, res: Response) {
     try {
       const { newAge } = req.body;
       const { id } = req.params;
@@ -50,9 +52,9 @@ const userController = {
       });
       console.error(_err.message);
     }
-  },
+  }
 
-  deleteById: async (req: Request, res: Response) => {
+  async deleteById(req: Request, res: Response) {
     try {
       const { id } = req.params;
 
@@ -67,7 +69,7 @@ const userController = {
       });
       console.error(_err.message);
     }
-  },
-};
+  }
+}
 
-export { userController };
+export { UserController };

@@ -1,7 +1,8 @@
 import { Router } from "express";
-import { houseController } from "@controllers/house-controller";
+import { HouseController } from "@controllers/house-controller";
 
 const router = Router();
+const houseController = new HouseController();
 
 router.post("/", houseController.create);
 router.get("/", houseController.get);

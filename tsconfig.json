@@ -5,7 +5,6 @@
     "strict": true,
     "lib": ["esnext"],
     "esModuleInterop": true,
-    "rootDir": "./src",
     "paths": {
       "@controllers/*": ["./src/controllers/*"],
       "@repositories/*": ["./src/repositories/*"],

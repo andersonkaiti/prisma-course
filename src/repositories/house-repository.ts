@@ -1,26 +1,26 @@
 import { prisma } from "@database/prisma-client";
 import { IHouse } from "@models/house";
 
-const houseRepository = {
-  create: async (house: IHouse) => {
+class HouseRepository {
+  async create(house: IHouse) {
     return await prisma.house.create({
       data: house,
     });
-  },
+  }
 
-  get: async () => {
+  async get() {
     return await prisma.house.findMany({
       include: { owner: true, builtBy: true },
     });
-  },
+  }
 
-  getById: async (id: IHouse["id"]) => {
+  async getById(id: IHouse["id"]) {
     return await prisma.house.findUnique({
       where: { id },
     });
-  },
+  }
 
-  getByAddress: async (address: IHouse["id"]) => {
+  async getByAddress(address: IHouse["id"]) {
     return await prisma.house.findUnique({
       where: { address },
       include: {
@@ -28,15 +28,15 @@ const houseRepository = {
         builtBy: true,
       },
     });
-  },
+  }
 
-  createMany: async (houses: IHouse[]) => {
+  async createMany(houses: IHouse[]) {
     return await prisma.house.createMany({
       data: houses,
     });
-  },
+  }
 
-  withFilters: async () => {
+  async withFilters() {
     return await prisma.house.findMany({
       where: {
         wifiPassword: {
@@ -58,7 +58,7 @@ const houseRepository = {
         builtBy: true,
       },
     });
-  },
-};
+  }
+}
 
-export { houseRepository };
+export { HouseRepository };

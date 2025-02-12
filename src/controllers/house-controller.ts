@@ -1,8 +1,10 @@
 import { Request, Response } from "express";
-import { houseRepository } from "@repositories/house-repository";
+import { HouseRepository } from "@repositories/house-repository";
 
-const houseController = {
-  create: async (req: Request, res: Response) => {
+const houseRepository = new HouseRepository();
+
+class HouseController {
+  async create(req: Request, res: Response) {
     try {
       const { address, wifiPassword, ownerId, builtById } = req.body;
 
@@ -22,9 +24,9 @@ const houseController = {
       });
       console.error(_err.message);
     }
-  },
+  }
 
-  get: async (_req: Request, res: Response) => {
+  async get(_req: Request, res: Response) {
     try {
       const allHouses = await houseRepository.get();
 
@@ -37,9 +39,9 @@ const houseController = {
       });
       console.error(_err.message);
     }
-  },
+  }
 
-  getById: async (req: Request, res: Response) => {
+  async getById(req: Request, res: Response) {
     try {
       const { id } = req.params;
 
@@ -54,9 +56,9 @@ const houseController = {
       });
       console.error(_err.message);
     }
-  },
+  }
 
-  getByAddress: async (req: Request, res: Response) => {
+  async getByAddress(req: Request, res: Response) {
     try {
       const { address } = req.body;
 
@@ -71,9 +73,9 @@ const houseController = {
       });
       console.error(_err.message);
     }
-  },
+  }
 
-  createMany: async (req: Request, res: Response) => {
+  async createMany(req: Request, res: Response) {
     try {
       const newHouse = await houseRepository.createMany(req.body);
 
@@ -86,9 +88,9 @@ const houseController = {
       });
       console.error(_err.message);
     }
-  },
+  }
 
-  withFilters: async (_req: Request, res: Response) => {
+  async withFilters(_req: Request, res: Response) {
     try {
       const allHouses = await houseRepository.withFilters();
 
@@ -101,7 +103,7 @@ const houseController = {
       });
       console.error(_err.message);
     }
-  },
-};
+  }
+}
 
-export { houseController };
+export { HouseController };

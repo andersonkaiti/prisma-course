@@ -1,5 +1,5 @@
 import http, { Server } from "node:http";
-import { app } from "./app";
+import { app } from "../src/app";
 
 const server: Server = http.createServer(app);
 

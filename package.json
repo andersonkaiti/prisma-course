@@ -1,11 +1,11 @@
 {
   "name": "prisma-course",
   "version": "1.0.0",
-  "main": "src/server.ts",
+  "main": "bin/server.ts",
   "scripts": {
-    "dev": "tsx watch --env-file .env src/server.ts",
-    "build": "tsup ./src",
-    "start": "node dist/server.js"
+    "dev": "tsx watch --env-file .env bin/server.ts",
+    "build": "tsup",
+    "start": "node --env-file .env dist/bin/server.js"
   },
   "keywords": [],
   "author": "",
@@ -13,13 +13,13 @@
   "description": "",
   "dependencies": {
     "@prisma/client": "^6.3.1",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "tsup": "^8.3.6"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
     "@types/node": "^22.13.1",
     "prisma": "^6.3.1",
-    "tsup": "^8.3.6",
     "tsx": "^4.19.2",
     "typescript": "^5.7.3"
   }

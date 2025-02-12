@@ -1,33 +1,33 @@
 import { prisma } from "@database/prisma-client";
 import { IUpdatedUser, IUser } from "@models/user";
 
-const userRepository = {
-  get: async () => {
+class UserRepository {
+  async get() {
     return await prisma.user.findMany();
-  },
+  }
 
-  create: async (user: IUser) => {
+  async create(user: IUser) {
     return await prisma.user.create({
       data: user,
     });
-  },
+  }
 
-  updateById: async (user: IUpdatedUser) => {
+  async updateById(user: IUpdatedUser) {
     return await prisma.user.update({
       data: user,
       where: {
         id: user.id,
       },
     });
-  },
+  }
 
-  deleteById: async (id: IUser["id"]) => {
+  async deleteById(id: IUser["id"]) {
     return await prisma.user.delete({
       where: {
         id,
       },
     });
-  },
-};
+  }
+}
 
-export { userRepository };
+export { UserRepository };
